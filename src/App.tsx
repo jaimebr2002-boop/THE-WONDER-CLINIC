@@ -91,7 +91,7 @@ export default function App() {
         <div className="flex-1 flex flex-col justify-center">
           <a href="#inicio" className="flex items-center">
             <img 
-              src="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1777903650/491446116_17986769747804061_3871277705596088368_n-removebg-preview_arfqbq.png" 
+              src="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1777904393/logo_def-removebg-preview_byny5b.png" 
               alt="The Wonder Clinic" 
               className="h-[50px] md:h-[60px] w-auto" 
             />
