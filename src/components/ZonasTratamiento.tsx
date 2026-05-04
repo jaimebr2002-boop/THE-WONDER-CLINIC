@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { motion } from 'motion/react';
+
 const ZonasTratamiento: React.FC = () => {
   return (
     <section className="zonas-section" id="zonas-wonder">
@@ -73,7 +75,15 @@ const ZonasTratamiento: React.FC = () => {
           }
         `}
       </style>
-      <h2 className="zonas-title">¿Qué zonas trata Wonder® en Oviedo?</h2>
+      <motion.h2 
+        className="zonas-title"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        ¿Qué zonas trata Wonder® en Oviedo?
+      </motion.h2>
       <div className="zonas-grid">
         
         {/* ABDOMEN */}

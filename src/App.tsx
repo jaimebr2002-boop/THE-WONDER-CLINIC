@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { Menu, X, Check, MapPin, Phone, Instagram, Facebook, Clock, Plus, Star, Activity, Zap } from 'lucide-react';
 import ZonasTratamiento from './components/ZonasTratamiento';
 import TestimonialSlider from './components/TestimonialSlider';
@@ -34,6 +35,9 @@ const AnimatedCounter = ({ target, duration = 2000, prefix = "", suffix = "" }: 
 };
 
 export default function App() {
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 1000], ['0%', '30%']);
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [activeAboutTab, setActiveAboutTab] = useState<'musculatura' | 'zonas' | 'beneficios'>('musculatura');
@@ -150,12 +154,17 @@ export default function App() {
 
       {/* SECCIÓN 2: HERO */}
       <section 
-        className="relative h-[calc(100vh-5rem)] w-full flex items-center justify-start bg-black bg-cover bg-center"
-        style={{ 
-          backgroundImage: "linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 100%), var(--hero-bg)",
-          "--hero-bg": "url('https://res.cloudinary.com/dfbsqy5ul/image/upload/v1777846196/DSC00215_jpvcec.jpg')" 
-        } as React.CSSProperties}
+        className="relative h-[calc(100vh-5rem)] w-full flex items-center justify-start bg-black overflow-hidden"
       >
+        {/* Parallax Background */}
+        <motion.div 
+          className="absolute inset-0 w-full h-[120%] bg-cover bg-center -top-[10%]"
+          style={{ 
+            backgroundImage: "linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 100%), url('https://res.cloudinary.com/dfbsqy5ul/image/upload/v1777846196/DSC00215_jpvcec.jpg')",
+            y: heroY
+          }}
+        />
+
         {/* Content */}
         <div className="relative z-10 px-6 md:px-16 max-w-7xl mx-auto w-full">
 
@@ -263,7 +272,7 @@ export default function App() {
               <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
                 SOBRE NOSOTROS
               </span>
-              <h2 className="mb-8 flex flex-col items-start animate-fade-in-up">
+              <motion.h2 className="mb-8 flex flex-col items-start " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
                 <span className="font-display italic text-white text-4xl md:text-5xl font-bold uppercase leading-none tracking-tight">
                   <span className="sr-only">Del deporte de élite a la medicina estética en Oviedo</span>
                   DEL DEPORTE DE ÉLITE
@@ -273,7 +282,7 @@ export default function App() {
                     A LA MEDICINA ESTÉTICA.
                   </span>
                 </div>
-              </h2>
+              </motion.h2>
               
               <p className="font-body text-gray-300 text-lg md:text-xl leading-relaxed mb-10 w-full">
                 La tecnología española WONDER® nació en el deporte de élite y hoy lidera el sector de la estética no invasiva a nivel mundial. Presente en clínicas de prestigio de 46 países, combina electroestimulación muscular de alta intensidad con resultados clínicamente probados para reducir grasa y crear músculo de forma rápida y segura.
@@ -336,7 +345,7 @@ export default function App() {
             <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
               EL MÉTODO
             </span>
-            <h2 className="mb-8 flex flex-col items-start animate-fade-in-up">
+            <motion.h2 className="mb-8 flex flex-col items-start " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
               <span className="font-display italic text-white text-5xl md:text-6xl lg:text-7xl font-bold uppercase leading-none tracking-tight">
                 El primer tratamiento clínicamente probado
               </span>
@@ -345,7 +354,7 @@ export default function App() {
                   para crear músculo y quemar grasa en Oviedo
                 </span>
               </div>
-            </h2>
+            </motion.h2>
             <p className="font-body text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
               Wonder Clinic Oviedo ofrece el único tratamiento estético no invasivo clínicamente probado que combina reducción de grasa localizada y aumento de masa muscular en una sola sesión. Mediante tecnología HIEMT (electroestimulación neuromuscular de alta intensidad) y terapia electromagnética focalizada, tratamos abdomen, glúteos, piernas, brazos, aductores y oblicuos. Sin cirugía. Sin recuperación. Con resultados visibles desde la primera sesión.
             </p>
@@ -363,7 +372,7 @@ export default function App() {
       {/* SECCIÓN 5: 3 VENTAJAS */}
       <section className="py-20 md:py-32 bg-[#0d0d0d]">
         <div className="max-w-7xl mx-auto px-6 md:px-16">
-          <h2 className="flex flex-col items-center justify-center text-center mb-16 animate-fade-in-up">
+          <motion.h2 className="flex flex-col items-center justify-center text-center mb-16 " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
             <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
               3 razones para elegir
             </span>
@@ -374,7 +383,7 @@ export default function App() {
               {/* Flecha triangular decorativa */}
               <div className="absolute -right-4 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[12px] border-t-transparent border-l-[16px] border-l-gold border-b-[12px] border-b-transparent hidden md:block"></div>
             </div>
-          </h2>
+          </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-[#111111] p-8 md:p-10 border-t-[3px] border-gold border-transparent hover:border-gold hover:-translate-y-1 transition-all duration-300">
@@ -413,7 +422,7 @@ export default function App() {
             <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
               TECNOLOGÍA WONDER®
             </span>
-            <h2 className="mb-10 flex flex-col items-start animate-fade-in-up">
+            <motion.h2 className="mb-10 flex flex-col items-start " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
               <span className="font-display italic text-white text-4xl md:text-5xl font-bold uppercase leading-none tracking-tight">
                 Cómo funciona la tecnología Wonder®
               </span>
@@ -422,7 +431,7 @@ export default function App() {
                   Electroestimulación muscular de alta intensidad
                 </span>
               </div>
-            </h2>
+            </motion.h2>
 
             <ul className="space-y-8 mb-10 w-full">
               <li className="flex gap-4 items-start">
@@ -492,11 +501,11 @@ export default function App() {
           <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4 text-center">
             INSTALACIONES
           </span>
-          <h2 className="mb-16 flex flex-col items-center text-center animate-fade-in-up">
+          <motion.h2 className="mb-16 flex flex-col items-center text-center " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
             <span className="font-display italic text-white text-5xl md:text-6xl font-bold uppercase leading-none tracking-tight">
               NUESTRAS INSTALACIONES EN OVIEDO
             </span>
-          </h2>
+          </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-1 w-full">
             {galleryImages.map((img, index) => (
@@ -522,7 +531,7 @@ export default function App() {
           <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4 text-center">
             RESULTADOS
           </span>
-          <h2 className="mb-16 flex flex-col items-center text-center animate-fade-in-up">
+          <motion.h2 className="mb-16 flex flex-col items-center text-center " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
             <span className="font-display italic text-white text-4xl md:text-5xl font-bold uppercase leading-none tracking-tight">
               Resultados reales de nuestras clientas en Oviedo
             </span>
@@ -531,7 +540,7 @@ export default function App() {
                 Antes y después
               </span>
             </div>
-          </h2>
+          </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
             <div className="relative bg-[#111] aspect-[4/3] group overflow-hidden">
@@ -556,7 +565,7 @@ export default function App() {
           <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
             EQUIPO
           </span>
-          <h2 className="mb-16 flex flex-col items-center animate-fade-in-up text-center">
+          <motion.h2 className="mb-16 flex flex-col items-center  text-center" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
             <span className="font-display italic text-white text-4xl md:text-5xl font-bold uppercase leading-none tracking-tight">
               Especialistas en estética avanzada
             </span>
@@ -565,7 +574,7 @@ export default function App() {
                 El equipo de Wonder Clinic Oviedo
               </span>
             </div>
-          </h2>
+          </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
             {[
@@ -595,7 +604,7 @@ export default function App() {
           <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
             CLIENTES
           </span>
-          <div className="mb-16 flex flex-col items-center animate-fade-in-up">
+          <motion.div className="mb-16 flex flex-col items-center " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
             <span className="font-display italic text-white text-4xl md:text-5xl font-bold uppercase leading-none tracking-tight">
               LO QUE DICEN
             </span>
@@ -604,7 +613,7 @@ export default function App() {
                 NUESTRAS CLIENTAS
               </span>
             </div>
-          </div>
+          </motion.div>
 
           <div className="w-full mb-12">
             <TestimonialSlider />
@@ -629,7 +638,7 @@ export default function App() {
           <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
             PROMOCIONES
           </span>
-          <div className="mb-16 flex flex-col items-center animate-fade-in-up">
+          <motion.div className="mb-16 flex flex-col items-center " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
             <span className="font-display italic text-white text-5xl md:text-6xl font-bold uppercase leading-none tracking-tight">
               OFERTA
             </span>
@@ -638,7 +647,7 @@ export default function App() {
                 SESIÓN DE PRUEBA
               </span>
             </div>
-          </div>
+          </motion.div>
 
           <div className="bg-[#111111] border-2 border-gold p-8 md:p-12 flex flex-col items-center text-center max-w-2xl w-full mb-8">
             <span className="font-display font-black text-gold text-7xl md:text-8xl leading-none mb-4">19,90€</span>
@@ -676,7 +685,7 @@ export default function App() {
             <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
               CITAS
             </span>
-            <h2 className="mb-12 flex flex-col items-start animate-fade-in-up">
+            <motion.h2 className="mb-12 flex flex-col items-start " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
               <span className="font-display italic text-white text-4xl md:text-5xl font-bold uppercase leading-none tracking-tight">
                 Reserva tu cita en Wonder Clinic
               </span>
@@ -685,7 +694,7 @@ export default function App() {
                   Oviedo, Calle Posada Herrera, 6
                 </span>
               </div>
-            </h2>
+            </motion.h2>
 
             <div className="flex flex-col sm:flex-row justify-start gap-8 w-full mb-12">
               <ul className="space-y-6">
