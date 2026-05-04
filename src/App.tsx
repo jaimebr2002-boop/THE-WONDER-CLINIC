@@ -77,8 +77,8 @@ export default function App() {
     { name: 'Sobre Nosotros', href: '#sobre-nosotros' },
     { name: 'El Método', href: '#el-metodo' },
     { name: 'Tecnología', href: '#tecnologia' },
-    { name: 'Resultados', href: '#resultados' },
     { name: 'Instalaciones', href: '#instalaciones' },
+    { name: 'Resultados', href: '#resultados' },
     { name: 'Contacto', href: '#contacto' }
   ];
 
@@ -89,15 +89,13 @@ export default function App() {
       
       <header className={`sticky top-0 z-50 bg-black border-b border-gold h-20 flex items-center px-4 md:px-8 transition-shadow duration-300 ${hasScrolled ? 'shadow-[0_4px_20px_rgba(249,196,113,0.15)]' : ''}`}>
         <div className="flex-1 flex flex-col justify-center">
-          <div className="flex items-baseline gap-2">
-            <span className="font-display font-bold text-2xl md:text-3xl tracking-wider uppercase text-white leading-none">
-              THE WONDER CLINIC
-            </span>
-          </div>
-          <div className="w-12 h-0.5 bg-gold my-1" />
-          <span className="font-body text-gray-400 text-xs md:text-sm leading-none">
-            Crea músculo. Quema grasa.
-          </span>
+          <a href="#inicio" className="flex items-center">
+            <img 
+              src="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1777903650/491446116_17986769747804061_3871277705596088368_n-removebg-preview_arfqbq.png" 
+              alt="The Wonder Clinic" 
+              className="h-[50px] md:h-[60px] w-auto" 
+            />
+          </a>
         </div>
 
         {/* Desktop Nav */}
@@ -351,9 +349,9 @@ export default function App() {
             <p className="font-body text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
               Wonder Clinic Oviedo ofrece el único tratamiento estético no invasivo clínicamente probado que combina reducción de grasa localizada y aumento de masa muscular en una sola sesión. Mediante tecnología HIEMT (electroestimulación neuromuscular de alta intensidad) y terapia electromagnética focalizada, tratamos abdomen, glúteos, piernas, brazos, aductores y oblicuos. Sin cirugía. Sin recuperación. Con resultados visibles desde la primera sesión.
             </p>
-            <button className="border-2 border-gold text-gold font-display font-bold text-lg px-8 py-3 uppercase tracking-wide rounded-none hover:bg-gold hover:text-black transition-colors w-full sm:w-auto" title="Más información reducir grasa Oviedo">
+            <a href="#contacto" className="border-2 border-gold text-gold font-display font-bold text-lg px-8 py-3 uppercase tracking-wide rounded-none hover:bg-gold hover:text-black transition-colors w-full sm:w-auto inline-block text-center" title="Más información reducir grasa Oviedo">
               Quiero saber más
-            </button>
+            </a>
           </div>
           <div className="order-1 lg:order-2 w-full">
             <img loading="lazy" src="https://res.cloudinary.com/dfbsqy5ul/image/upload/v1777757493/IMG_9128_gdp9vw.jpg" alt="Equipo Wonder" className="w-full h-auto object-cover rounded-none" />
@@ -482,17 +480,17 @@ export default function App() {
           <p className="font-body text-white font-bold text-xl md:text-2xl mb-10 w-full max-w-3xl px-4 md:px-6">
             En Wonder Clinic Oviedo te ayudamos a recuperar tu cuerpo con tratamientos no invasivos y resultados comprobados. Sin cirugía. Sin dietas extremas. Sin excusas.
           </p>
-          <button className="bg-gold text-black font-display font-bold text-xl px-10 py-4 uppercase rounded-none hover:bg-white transition-colors">
+          <a href="#contacto" className="bg-gold text-black font-display font-bold text-xl px-10 py-4 uppercase rounded-none hover:bg-white transition-colors inline-block text-center">
             Empieza hoy
-          </button>
+          </a>
         </div>
       </section>
 
-      {/* SECCIÓN 9: RESULTADOS */}
-      <section id="resultados" className="py-20 md:py-32 bg-[#0d0d0d]">
+            {/* SECCIÓN 10: INSTALACIONES */}
+      <section id="instalaciones" className="py-20 md:py-32 bg-[#0d0d0d]">
         <div className="max-w-7xl mx-auto px-6 md:px-16 flex flex-col items-center">
           <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4 text-center">
-            RESULTADOS
+            INSTALACIONES
           </span>
           <h2 className="mb-16 flex flex-col items-center text-center animate-fade-in-up">
             <span className="font-display italic text-white text-5xl md:text-6xl font-bold uppercase leading-none tracking-tight">
@@ -517,8 +515,43 @@ export default function App() {
         </div>
       </section>
 
+      
+{/* SECCIÓN 9: RESULTADOS */}
+      <section id="resultados" className="py-20 md:py-32 bg-black">
+        <div className="max-w-7xl mx-auto px-6 md:px-16 flex flex-col items-center">
+          <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4 text-center">
+            RESULTADOS
+          </span>
+          <h2 className="mb-16 flex flex-col items-center text-center animate-fade-in-up">
+            <span className="font-display italic text-white text-4xl md:text-5xl font-bold uppercase leading-none tracking-tight">
+              Resultados reales de nuestras clientas en Oviedo
+            </span>
+            <div className="bg-gold px-4 pt-2 md:pt-3 pb-0 md:pb-1 mt-1">
+              <span className="font-display text-black text-4xl md:text-5xl font-black uppercase leading-[0.8] tracking-tight block">
+                Antes y después
+              </span>
+            </div>
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
+            <div className="relative bg-[#111] aspect-[4/3] group overflow-hidden">
+              <img loading="lazy" src="https://placehold.co/800x600/111111/F9C471?text=ANTES+Y+DESPUES+1" alt="Resultados Antes y Después 1" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div className="relative bg-[#111] aspect-[4/3] group overflow-hidden">
+              <img loading="lazy" src="https://placehold.co/800x600/111111/F9C471?text=ANTES+Y+DESPUES+2" alt="Resultados Antes y Después 2" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div className="relative bg-[#111] aspect-[4/3] group overflow-hidden">
+              <img loading="lazy" src="https://placehold.co/800x600/111111/F9C471?text=ANTES+Y+DESPUES+3" alt="Resultados Antes y Después 3" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div className="relative bg-[#111] aspect-[4/3] group overflow-hidden">
+              <img loading="lazy" src="https://placehold.co/800x600/111111/F9C471?text=ANTES+Y+DESPUES+4" alt="Resultados Antes y Después 4" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SECCIÓN 13: EQUIPO */}
-      <section id="equipo" className="py-20 md:py-32 bg-black">
+      <section id="equipo" className="py-20 md:py-32 bg-[#0d0d0d]">
         <div className="max-w-7xl mx-auto px-6 md:px-16 flex flex-col items-center">
           <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
             EQUIPO
@@ -557,7 +590,7 @@ export default function App() {
       </section>
 
       {/* SECCIÓN 14: CLIENTES / TESTIMONIOS */}
-      <section id="clientes" className="py-20 md:py-32 bg-[#0d0d0d]">
+      <section id="clientes" className="py-20 md:py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6 md:px-16 flex flex-col items-center">
           <span className="text-gold font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
             CLIENTES
@@ -589,7 +622,7 @@ export default function App() {
       </section>
 
       {/* SECCIÓN 15: PROMOS */}
-      <section id="promos" className="py-20 md:py-32 bg-black relative">
+      <section id="promos" className="py-20 md:py-32 bg-[#0d0d0d] relative">
         <div className="absolute inset-0 max-w-full overflow-hidden opacity-5 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #F9C471 0, #F9C471 1px, transparent 0, transparent 50%)', backgroundSize: '10px 10px' }} />
         
         <div className="max-w-7xl mx-auto px-6 md:px-16 flex flex-col items-center relative z-10">
@@ -636,7 +669,7 @@ export default function App() {
       </section>
 
       {/* SECCIÓN 16: CITAS / CONTACTO */}
-      <section id="contacto" className="py-20 md:py-32 bg-[#0d0d0d]">
+      <section id="contacto" className="py-20 md:py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* Left: Contact Info */}
           <div className="flex flex-col justify-center">
